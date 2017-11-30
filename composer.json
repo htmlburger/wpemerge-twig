@@ -1,0 +1,37 @@
+{
+    "name": "htmlburger/obsidian-twig",
+    "description": "Enables the use of Twig templates in Obsidian.",
+    "keywords": ["wordpress", "framework", "template", "view", "obsidian"],
+    "license": "GPL-2.0",
+    "homepage": "https://github.com/htmlburger/obsidian-twig",
+    "authors": [
+        {
+            "name": "htmlBurger",
+            "email": "wordpress@htmlburger.com",
+            "homepage": "https://htmlburger.com/",
+            "role": "Developer"
+        },
+        {
+            "name": "Atanas Angelov",
+            "email": "atanas.angelov.dev@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/htmlburger/obsidian-twig",
+        "issues": "https://github.com/htmlburger/obsidian-twig/issues",
+        "email": "wordpress@htmlburger.com"
+    },
+    "autoload": {
+        "psr-4": {
+            "ObsidianTwig\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.5",
+        "twig/twig": "^2.4",
+        "htmlburger/obsidian": "^0.1.0"
+    },
+    "require-dev": {
+    }
+}
