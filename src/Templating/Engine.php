@@ -26,10 +26,10 @@ class Engine implements EngineInterface {
 	 * @param \Twig_Environment $twig
 	 * @param string            $views
 	 */
-    public function __construct( Twig_Environment $twig, $views ) {
-        $this->twig = $twig;
-        $this->views = $views;
-    }
+	public function __construct( Twig_Environment $twig, $views ) {
+		$this->twig = $twig;
+		$this->views = $views;
+	}
 
 	/**
 	 * Render a template to a string
@@ -40,6 +40,15 @@ class Engine implements EngineInterface {
 	 */
 	public function render( $file, $context ) {
 		$template = $this->twig->load( substr( $file, strlen( $this->views ) ) );
-        return $template->render( $context );
+		return $template->render( $context );
+	}
+
+	/**
+	 * Get the Twig_Environment instance
+	 *
+	 * @return \Twig_Environment
+	 */
+	public function environment() {
+		return $this->twig;
 	}
 }
