@@ -19,13 +19,15 @@ Enables the use of Twig templates in Obsidian.
     $container['framework.templating.engine'] = $container->raw( 'obsidian_twig.templating.engine' );
     ```
 
-## Passing options to Twig
+## Options
 
-ObsidianTwig will look for `'obsidian_twig.templating.engine.options'` in Obsidian's container to pass as options to Twig.
-Default options are as follows:
+Default options:
 ```php
 [
-    'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
+    'views' => ABSPATH,
+    'twig' => [ // options passed directly to Twig
+        'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
+    ]
 ]
 ```
 
@@ -33,10 +35,12 @@ You can use this to change the default options:
 ```php
 $container = \Obsidian\Framework::getContainer();
 $container['obsidian_twig.templating.engine.options'] = [
-    // example:
-    'cache' => false, // disable cache (NOT advisable for production use)
+    'twig' => [
+        'cache' => false, // disable cache (NOT advisable for production use)
+        // ... other options
+    ]
     // ... other options
 ];
 ```
 
-More information on what options are supported is available on https://twig.symfony.com/doc/2.x/api.html
+More information on what Twig options are supported is available on https://twig.symfony.com/doc/2.x/api.html

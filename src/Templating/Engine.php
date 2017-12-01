@@ -2,9 +2,8 @@
 
 namespace ObsidianTwig\Templating;
 
-use Twig_Environment;
-use Twig_Loader_Filesystem;
 use Obsidian\Templating\EngineInterface;
+use Twig_Environment;
 
 class Engine implements EngineInterface {
 	/**
@@ -15,12 +14,21 @@ class Engine implements EngineInterface {
 	protected $twig = null;
 
 	/**
+	 * Root directory for all views
+	 *
+	 * @var string
+	 */
+	protected $views = '';
+
+	/**
 	 * Constructor
 	 *
 	 * @param \Twig_Environment $twig
+	 * @param string            $views
 	 */
-    public function __construct( Twig_Environment $twig ) {
+    public function __construct( Twig_Environment $twig, $views ) {
         $this->twig = $twig;
+        $this->views = $views;
     }
 
 	/**
@@ -31,23 +39,7 @@ class Engine implements EngineInterface {
 	 * @return string
 	 */
 	public function render( $file, $context ) {
-		$template = $this->twig->load( substr( $file, strlen( ABSPATH ) ) );
+		$template = $this->twig->load( substr( $file, strlen( $this->views ) ) );
         return $template->render( $context );
-	}
-
-	/**
-	 * Creates a new instance
-	 *
-	 * @param  array  $options
-	 * @return Engine
-	 */
-	public static function make( $options ) {
-		$options = array_merge( [
-			'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
-		], $options );
-
-		$loader = new Twig_Loader_Filesystem( ABSPATH );
-		$twig = new Twig_Environment( $loader, $options );
-		return new static( $twig );
 	}
 }
