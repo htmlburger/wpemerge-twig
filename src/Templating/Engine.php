@@ -32,11 +32,7 @@ class Engine implements EngineInterface {
 	}
 
 	/**
-	 * Render a template to a string
-	 *
-	 * @param  string $file
-	 * @param  array  $context
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function render( $file, $context ) {
 		$template = $this->twig->load( substr( $file, strlen( $this->views ) ) );

@@ -8,10 +8,7 @@ use Twig_Loader_Filesystem;
 
 class ServiceProvider implements ServiceProviderInterface {
 	/**
-	 * Register all dependencies in the IoC container
-	 *
-	 * @param  \Pimple\Container $container
-	 * @return null
+	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
 		$container['obsidian_twig.templating.engine'] = function( $c ) {
@@ -32,10 +29,7 @@ class ServiceProvider implements ServiceProviderInterface {
 	}
 
 	/**
-	 * Bootstrap any services if needed
-	 *
-	 * @param  \Pimple\Container $container
-	 * @return null
+	 * {@inheritDoc}
 	 */
 	public function boot( $container ) {
 		// nothing to boot

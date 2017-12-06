@@ -7,16 +7,16 @@ Enables the use of Twig templates in Obsidian.
 1. Run `composer require htmlburger/obsidian-twig` in your theme directory
 1. Add `\ObsidianTwig\Templating\ServiceProvider` to your array of providers when booting Obsidian:
     ```php
-    \Obsidian\Framework::boot( [
+    Obsidian::boot( [
         'providers' => [
             \ObsidianTwig\Templating\ServiceProvider::class,
         ],
     ] );
     ```
-1. Replace the current template engine by adding this immediately after `\Obsidian\Framework::boot()`:
+1. Replace the current template engine by adding this immediately after `Obsidian::boot()`:
     ```php
-    $container = \Obsidian\Framework::getContainer();
-    $container['framework.templating.engine'] = $container->raw( 'obsidian_twig.templating.engine' );
+    $container = Obsidian::getContainer();
+    $container[ OBSIDIAN_TEMPLATING_ENGINE_KEY ] = $container->raw( 'obsidian_twig.templating.engine' );
     ```
 
 ## Options
@@ -33,7 +33,7 @@ Default options:
 
 You can use this to change the default options:
 ```php
-$container = \Obsidian\Framework::getContainer();
+$container = Obsidian::getContainer();
 $container['obsidian_twig.templating.engine.options'] = [
     'twig' => [
         'cache' => false, // disable cache (NOT advisable for production use)
@@ -53,7 +53,7 @@ $myfilter = new Twig_Filter( 'myfilter', function( $string ) {
     return strtoupper( $string );
 } );
 
-$twig = \Obsidian\Framework::resolve( 'obsidian_twig.templating.engine' );
+$twig = Obsidian::resolve( 'obsidian_twig.templating.engine' );
 $twig->environment()->addFilter( $myfilter );
 ```
 With this, you now have your very own custom Twig filter:
