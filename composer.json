@@ -1,9 +1,9 @@
 {
-    "name": "htmlburger/wp-emerge-twig",
+    "name": "htmlburger/wpemerge-twig",
     "description": "Enables the use of Twig templates in WP Emerge.",
-    "keywords": ["wordpress", "framework", "template", "view", "wp-emerge"],
+    "keywords": ["wordpress", "framework", "template", "view", "wpemerge"],
     "license": "GPL-2.0",
-    "homepage": "https://github.com/htmlburger/wp-emerge-twig",
+    "homepage": "https://github.com/htmlburger/wpemerge-twig",
     "authors": [
         {
             "name": "htmlBurger",
@@ -18,8 +18,8 @@
         }
     ],
     "support": {
-        "source": "https://github.com/htmlburger/wp-emerge-twig",
-        "issues": "https://github.com/htmlburger/wp-emerge-twig/issues",
+        "source": "https://github.com/htmlburger/wpemerge-twig",
+        "issues": "https://github.com/htmlburger/wpemerge-twig/issues",
         "email": "wordpress@htmlburger.com"
     },
     "autoload": {
@@ -30,7 +30,7 @@
     "require": {
         "php": ">=5.5",
         "twig/twig": "^2.4",
-        "htmlburger/wp-emerge": "^0.3.0"
+        "htmlburger/wpemerge": "^0.4.0"
     },
     "require-dev": {
     }

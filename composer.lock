@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d0040a0a6cd23bf31fa630f38bc550f",
+    "content-hash": "0df1bb3d2d1f8dfd17ef5ee8be7b1b70",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -117,17 +117,17 @@
             "time": "2015-05-11T14:41:42+00:00"
         },
         {
-            "name": "htmlburger/wp-emerge",
-            "version": "0.3.0",
+            "name": "htmlburger/wpemerge",
+            "version": "0.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/htmlburger/wp-emerge.git",
-                "reference": "2c27250a128bb81fd0065cbe07482b26fe7e100c"
+                "url": "https://github.com/htmlburger/wpemerge.git",
+                "reference": "c04d705020c1bf472d9edc23833ecda053ee8f22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/wp-emerge/zipball/2c27250a128bb81fd0065cbe07482b26fe7e100c",
-                "reference": "2c27250a128bb81fd0065cbe07482b26fe7e100c",
+                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/c04d705020c1bf472d9edc23833ecda053ee8f22",
+                "reference": "c04d705020c1bf472d9edc23833ecda053ee8f22",
                 "shasum": ""
             },
             "require": {
@@ -167,7 +167,7 @@
                 }
             ],
             "description": "A micro framework which modernizes WordPress as a CMS development by providing tools to implement MVC and more.",
-            "homepage": "https://github.com/htmlburger/wp-emerge",
+            "homepage": "https://github.com/htmlburger/wpemerge",
             "keywords": [
                 "controller",
                 "facade",
@@ -178,9 +178,9 @@
                 "template",
                 "view",
                 "wordpress",
-                "wp-emerge"
+                "wpemerge"
             ],
-            "time": "2017-12-06T16:43:14+00:00"
+            "time": "2017-12-06T17:26:15+00:00"
         },
         {
             "name": "mockery/mockery",

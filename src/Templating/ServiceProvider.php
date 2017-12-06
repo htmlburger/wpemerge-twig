@@ -11,8 +11,8 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container['wp_emerge_twig.templating.engine'] = function( $c ) {
-			$key = 'wp_emerge_twig.templating.engine.options';
+		$container['wpemerge_twig.templating.engine'] = function( $c ) {
+			$key = 'wpemerge_twig.templating.engine.options';
 			$options = isset( $c[ $key ] ) ? $c[ $key ] : [];
 
 			$options = array_merge( [
