@@ -1,8 +1,8 @@
 <?php
 
-namespace ObsidianTwig\Templating;
+namespace WPEmergeTwig\Templating;
 
-use Obsidian\Templating\EngineInterface;
+use WPEmerge\Templating\EngineInterface;
 use Twig_Environment;
 
 class Engine implements EngineInterface {

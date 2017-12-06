@@ -1,8 +1,8 @@
 <?php
 
-namespace ObsidianTwig\Templating;
+namespace WPEmergeTwig\Templating;
 
-use Obsidian\ServiceProviders\ServiceProviderInterface;
+use WPEmerge\ServiceProviders\ServiceProviderInterface;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
 
@@ -11,8 +11,8 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container['obsidian_twig.templating.engine'] = function( $c ) {
-			$key = 'obsidian_twig.templating.engine.options';
+		$container['wp_emerge_twig.templating.engine'] = function( $c ) {
+			$key = 'wp_emerge_twig.templating.engine.options';
 			$options = isset( $c[ $key ] ) ? $c[ $key ] : [];
 
 			$options = array_merge( [

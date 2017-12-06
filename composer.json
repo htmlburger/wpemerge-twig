@@ -1,9 +1,9 @@
 {
-    "name": "htmlburger/obsidian-twig",
-    "description": "Enables the use of Twig templates in Obsidian.",
-    "keywords": ["wordpress", "framework", "template", "view", "obsidian"],
+    "name": "htmlburger/wp-emerge-twig",
+    "description": "Enables the use of Twig templates in WP Emerge.",
+    "keywords": ["wordpress", "framework", "template", "view", "wp-emerge"],
     "license": "GPL-2.0",
-    "homepage": "https://github.com/htmlburger/obsidian-twig",
+    "homepage": "https://github.com/htmlburger/wp-emerge-twig",
     "authors": [
         {
             "name": "htmlBurger",
@@ -18,19 +18,19 @@
         }
     ],
     "support": {
-        "source": "https://github.com/htmlburger/obsidian-twig",
-        "issues": "https://github.com/htmlburger/obsidian-twig/issues",
+        "source": "https://github.com/htmlburger/wp-emerge-twig",
+        "issues": "https://github.com/htmlburger/wp-emerge-twig/issues",
         "email": "wordpress@htmlburger.com"
     },
     "autoload": {
         "psr-4": {
-            "ObsidianTwig\\": "src/"
+            "WPEmergeTwig\\": "src/"
         }
     },
     "require": {
         "php": ">=5.5",
         "twig/twig": "^2.4",
-        "htmlburger/obsidian": "^0.1.0"
+        "htmlburger/wp-emerge": "^0.1.0"
     },
     "require-dev": {
     }
