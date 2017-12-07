@@ -1,4 +1,4 @@
-# Оbsidian Twig
+# WP Emerge Twig
 
 Enables the use of Twig templates in WP Emerge.
 
