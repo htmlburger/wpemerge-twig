@@ -24,11 +24,14 @@ class Engine implements EngineInterface {
 	 * Constructor
 	 *
 	 * @param \Twig_Environment $twig
+	 * @param array             $global_context
 	 * @param string            $views
 	 */
-	public function __construct( Twig_Environment $twig, $views ) {
+	public function __construct( Twig_Environment $twig, $global_context, $views ) {
 		$this->twig = $twig;
 		$this->views = $views;
+
+		$this->twig->addGlobal( 'global', $global_context );
 	}
 
 	/**

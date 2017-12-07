@@ -24,7 +24,7 @@ class ServiceProvider implements ServiceProviderInterface {
 
 			$loader = new Twig_Loader_Filesystem( $options['views'] );
 			$twig = new Twig_Environment( $loader, $options['twig'] );
-			return new Engine( $twig, $options['views'] );
+			return new Engine( $twig, $c[ WPEMERGE_CONFIG_KEY ]['global_template_context'], $options['views'] );
 		};
 	}
 
