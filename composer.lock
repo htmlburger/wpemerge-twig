@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0df1bb3d2d1f8dfd17ef5ee8be7b1b70",
+    "content-hash": "edf339b38cbd496dec508d5d9e4dd1cd",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -118,16 +118,16 @@
         },
         {
             "name": "htmlburger/wpemerge",
-            "version": "0.4.0",
+            "version": "0.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/wpemerge.git",
-                "reference": "c04d705020c1bf472d9edc23833ecda053ee8f22"
+                "reference": "38d429be6d6c8ade3c3e94243655750b582fe446"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/c04d705020c1bf472d9edc23833ecda053ee8f22",
-                "reference": "c04d705020c1bf472d9edc23833ecda053ee8f22",
+                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/38d429be6d6c8ade3c3e94243655750b582fe446",
+                "reference": "38d429be6d6c8ade3c3e94243655750b582fe446",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,7 @@
                 "wordpress",
                 "wpemerge"
             ],
-            "time": "2017-12-06T17:26:15+00:00"
+            "time": "2017-12-08T07:23:38+00:00"
         },
         {
             "name": "mockery/mockery",
