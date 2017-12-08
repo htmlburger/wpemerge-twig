@@ -1,6 +1,6 @@
 <?php
 
-namespace WPEmergeTwig\Templating;
+namespace WPEmergeTwig\View;
 
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
 use Twig_Environment;
@@ -11,8 +11,8 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container['wpemerge_twig.templating.engine'] = function( $c ) {
-			$key = 'wpemerge_twig.templating.engine.options';
+		$container['wpemerge_twig.view.engine'] = function( $c ) {
+			$key = 'wpemerge_twig.view.engine.options';
 			$options = isset( $c[ $key ] ) ? $c[ $key ] : [];
 
 			$options = array_merge( [
@@ -24,7 +24,7 @@ class ServiceProvider implements ServiceProviderInterface {
 
 			$loader = new Twig_Loader_Filesystem( $options['views'] );
 			$twig = new Twig_Environment( $loader, $options['twig'] );
-			return new Engine( $twig, $c[ WPEMERGE_CONFIG_KEY ]['global_template_context'], $options['views'] );
+			return new Engine( $twig, $c[ WPEMERGE_CONFIG_KEY ]['global_view_context'], $options['views'] );
 		};
 	}
 

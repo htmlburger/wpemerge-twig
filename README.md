@@ -1,22 +1,22 @@
 # WP Emerge Twig
 
-Enables the use of Twig templates in WP Emerge.
+Enables the use of Twig views in WP Emerge.
 
 ## Quickstart
 
 1. Run `composer require htmlburger/wpemerge-twig` in your theme directory
-1. Add `\WPEmergeTwig\Templating\ServiceProvider` to your array of providers when booting WPEmerge:
+1. Add `\WPEmergeTwig\View\ServiceProvider` to your array of providers when booting WPEmerge:
     ```php
     WPEmerge::boot( [
         'providers' => [
-            \WPEmergeTwig\Templating\ServiceProvider::class,
+            \WPEmergeTwig\View\ServiceProvider::class,
         ],
     ] );
     ```
-1. Replace the current template engine by adding this immediately after `WPEmerge::boot()`:
+1. Replace the current view engine by adding this immediately after `WPEmerge::boot()`:
     ```php
     $container = WPEmerge::getContainer();
-    $container[ WPEMERGE_TEMPLATING_ENGINE_KEY ] = $container->raw( 'wpemerge_twig.templating.engine' );
+    $container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( 'wpemerge_twig.view.engine' );
     ```
 
 ## Options
@@ -34,7 +34,7 @@ Default options:
 You can use this to change the default options:
 ```php
 $container = WPEmerge::getContainer();
-$container['wpemerge_twig.templating.engine.options'] = [
+$container['wpemerge_twig.view.engine.options'] = [
     'twig' => [
         'cache' => false, // disable cache (NOT advisable for production use)
         // ... other options
@@ -53,7 +53,7 @@ $myfilter = new Twig_Filter( 'myfilter', function( $string ) {
     return strtoupper( $string );
 } );
 
-$twig = WPEmerge::resolve( 'wpemerge_twig.templating.engine' );
+$twig = WPEmerge::resolve( 'wpemerge_twig.view.engine' );
 $twig->environment()->addFilter( $myfilter );
 ```
 With this, you now have your very own custom Twig filter:

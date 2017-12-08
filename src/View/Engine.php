@@ -1,8 +1,8 @@
 <?php
 
-namespace WPEmergeTwig\Templating;
+namespace WPEmergeTwig\View;
 
-use WPEmerge\Templating\EngineInterface;
+use WPEmerge\View\EngineInterface;
 use Twig_Environment;
 
 class Engine implements EngineInterface {
@@ -38,8 +38,8 @@ class Engine implements EngineInterface {
 	 * {@inheritDoc}
 	 */
 	public function render( $file, $context ) {
-		$template = $this->twig->load( substr( $file, strlen( $this->views ) ) );
-		return $template->render( $context );
+		$view = $this->twig->load( substr( $file, strlen( $this->views ) ) );
+		return $view->render( $context );
 	}
 
 	/**
