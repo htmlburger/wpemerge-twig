@@ -28,7 +28,7 @@
         }
     },
     "require": {
-        "php": ">=5.5",
+        "php": "^7.0",
         "twig/twig": "^2.4",
         "htmlburger/wpemerge": "^0.6"
     },

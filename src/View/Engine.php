@@ -2,14 +2,24 @@
 
 namespace WPEmergeTwig\View;
 
-use WPEmerge\View\EngineInterface;
+use View;
 use Twig_Environment;
+use Twig_ExistsLoaderInterface;
+use WPEmerge\View\EngineInterface;
+use WPEmerge\View\GlobalAdded;
 
 class Engine implements EngineInterface {
 	/**
+	 * Twig loader
+	 *
+	 * @var Twig_ExistsLoaderInterface
+	 */
+	protected $loader = null;
+
+	/**
 	 * Twig instance
 	 *
-	 * @var \Twig_Environment
+	 * @var Twig_Environment
 	 */
 	protected $twig = null;
 
@@ -23,31 +33,53 @@ class Engine implements EngineInterface {
 	/**
 	 * Constructor
 	 *
-	 * @param \Twig_Environment $twig
-	 * @param array             $global_context
-	 * @param string            $views
+	 * @param Twig_ExistsLoaderInterface $loader
+	 * @param Twig_Environment           $twig
+	 * @param string                     $views
 	 */
-	public function __construct( Twig_Environment $twig, $global_context, $views ) {
+	public function __construct( Twig_ExistsLoaderInterface $loader, Twig_Environment $twig, $views ) {
+		$this->loader = $loader;
 		$this->twig = $twig;
 		$this->views = $views;
 
-		$this->twig->addGlobal( 'global', $global_context );
+		$this->environment()->addGlobal( 'global', View::getGlobals() );
 	}
 
 	/**
 	 * {@inheritDoc}
 	 */
-	public function render( $file, $context ) {
-		$view = $this->twig->load( substr( $file, strlen( $this->views ) ) );
-		return $view->render( $context );
+	public function exists( $view ) {
+		return $this->loader()->exists( $view );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public function render( $views, $context ) {
+		foreach ( $views as $view ) {
+			if ( $this->exists( $view ) ) {
+				return $this->environment()->load( $view )->render( $context );
+			}
+		}
+
+		return '';
 	}
 
 	/**
 	 * Get the Twig_Environment instance
 	 *
-	 * @return \Twig_Environment
+	 * @return Twig_Environment
 	 */
 	public function environment() {
 		return $this->twig;
+	}
+
+	/**
+	 * Get the Twig_ExistsLoaderInterface instance
+	 *
+	 * @return Twig_ExistsLoaderInterface
+	 */
+	public function loader() {
+		return $this->loader;
 	}
 }

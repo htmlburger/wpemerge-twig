@@ -18,13 +18,14 @@ class ServiceProvider implements ServiceProviderInterface {
 			$options = array_merge( [
 				'views' => get_stylesheet_directory(),
 				'twig' => [
+					'base_template_class' => Template::class,
 					'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
 				]
 			], $options );
 
 			$loader = new Twig_Loader_Filesystem( $options['views'] );
 			$twig = new Twig_Environment( $loader, $options['twig'] );
-			return new Engine( $twig, $c[ WPEMERGE_CONFIG_KEY ]['global_view_context'], $options['views'] );
+			return new Engine( $loader, $twig, $options['views'] );
 		};
 	}
 
