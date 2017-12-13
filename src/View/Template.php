@@ -12,8 +12,8 @@ abstract class Template extends Twig_Template {
 	public function display( array $context, array $blocks = [] ) {
 		$view = preg_replace( '~^/~', '', $this->getTemplateName() );
 		$context = array_merge(
-			$context,
-			View::compose( $view )
+			View::compose( $view ),
+			$context
 		);
 		parent::display( $context, $blocks );
 	}
