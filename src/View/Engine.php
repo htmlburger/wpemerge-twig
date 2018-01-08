@@ -55,6 +55,14 @@ class Engine implements EngineInterface {
 	/**
 	 * {@inheritDoc}
 	 */
+	public function canonical( $view ) {
+		// ::findTemplate() is private so we use a suitable alternative
+		return $this->loader->getCacheKey( $view );
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public function render( $views, $context ) {
 		foreach ( $views as $view ) {
 			if ( $this->exists( $view ) ) {
