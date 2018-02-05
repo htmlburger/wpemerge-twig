@@ -2,7 +2,7 @@
     "name": "htmlburger/wpemerge-twig",
     "description": "Enables the use of Twig views in WP Emerge.",
     "keywords": ["wordpress", "framework", "template", "view", "wpemerge"],
-    "license": "GPL-2.0",
+    "license": "GPL-2.0-only",
     "homepage": "https://github.com/htmlburger/wpemerge-twig",
     "authors": [
         {
@@ -30,7 +30,7 @@
     "require": {
         "php": "^7.0",
         "twig/twig": "^2.4",
-        "htmlburger/wpemerge": "^0.6"
+        "htmlburger/wpemerge": "^0.8"
     },
     "require-dev": {
     }
