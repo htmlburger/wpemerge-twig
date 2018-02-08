@@ -47,8 +47,7 @@ class TwigView implements ViewInterface {
 			throw new Exception( 'View must have a name.' );
 		}
 
-		$context = $this->getContext();
-		return $this->getTwigView()->render( $context );
+		return $this->getTwigView()->render( $this->getContext() );
 	}
 
 	/**
