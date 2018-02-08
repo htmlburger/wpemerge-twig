@@ -6,7 +6,6 @@ use Exception;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use Twig_TemplateWrapper;
-use WPEmerge\Facades\View;
 use WPEmerge\View\HasContextTrait;
 use WPEmerge\View\HasNameTrait;
 use WPEmerge\View\ViewInterface;
