@@ -22,7 +22,7 @@ class TwigView implements ViewInterface {
 	 *
 	 * @var Twig_TemplateWrapper
 	 */
-	protected $twig_view = '';
+	protected $twig_view = null;
 
 	/**
 	 * {@inheritDoc}
