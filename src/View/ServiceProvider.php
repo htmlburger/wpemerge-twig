@@ -11,8 +11,8 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
-		$container['wpemerge_twig.view.engine'] = function( $c ) {
-			$key = 'wpemerge_twig.view.engine.options';
+		$container['wpemerge_twig.view.viewengine'] = function( $c ) {
+			$key = 'wpemerge_twig.view.viewengine.options';
 			$options = isset( $c[ $key ] ) ? $c[ $key ] : [];
 
 			$options = array_merge( [
@@ -25,7 +25,7 @@ class ServiceProvider implements ServiceProviderInterface {
 
 			$loader = new Twig_Loader_Filesystem( $options['views'] );
 			$twig = new Twig_Environment( $loader, $options['twig'] );
-			return new Engine( $loader, $twig, $options['views'] );
+			return new ViewEngine( $loader, $twig, $options['views'] );
 		};
 	}
 

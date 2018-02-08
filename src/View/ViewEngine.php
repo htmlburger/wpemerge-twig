@@ -2,13 +2,12 @@
 
 namespace WPEmergeTwig\View;
 
-use View;
 use Twig_Environment;
 use Twig_ExistsLoaderInterface;
-use WPEmerge\View\EngineInterface;
-use WPEmerge\View\GlobalAdded;
+use WPEmerge\Facades\View;
+use WPEmerge\View\ViewEngineInterface;
 
-class Engine implements EngineInterface {
+class ViewEngine implements ViewEngineInterface {
 	/**
 	 * Twig loader
 	 *
@@ -63,14 +62,17 @@ class Engine implements EngineInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function render( $views, $context ) {
+	public function make( $views, $context = [] ) {
 		foreach ( $views as $view ) {
 			if ( $this->exists( $view ) ) {
-				return $this->environment()->load( $view )->render( $context );
+				return (new TwigView())
+					->setName( $view )
+					->setTwigView( $this->environment()->load( $view ) )
+					->with( $context );
 			}
 		}
 
-		return '';
+		throw new Exception( 'View not found for "' . implode( ', ', $views ) . '"' );
 	}
 
 	/**
