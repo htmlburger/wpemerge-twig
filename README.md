@@ -16,7 +16,7 @@ Enables the use of Twig views in WP Emerge.
 1. Replace the current view engine by adding this immediately after `WPEmerge::boot()`:
     ```php
     $container = WPEmerge::getContainer();
-    $container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( 'wpemerge_twig.view.engine' );
+    $container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
     ```
 
 ## Options
@@ -34,7 +34,7 @@ Default options:
 You can use this to change the default options:
 ```php
 $container = WPEmerge::getContainer();
-$container['wpemerge_twig.view.engine.options'] = [
+$container[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_OPTIONS_KEY ] = [
     'twig' => [
         'cache' => false, // disable cache (NOT advisable for production use)
         // ... other options
