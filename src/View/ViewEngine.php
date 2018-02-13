@@ -5,6 +5,7 @@ namespace WPEmergeTwig\View;
 use Twig_Environment;
 use Twig_ExistsLoaderInterface;
 use WPEmerge\Facades\View;
+use WPEmerge\Helpers\Mixed;
 use WPEmerge\View\ViewEngineInterface;
 
 class ViewEngine implements ViewEngineInterface {
@@ -39,7 +40,7 @@ class ViewEngine implements ViewEngineInterface {
 	public function __construct( Twig_ExistsLoaderInterface $loader, Twig_Environment $twig, $views ) {
 		$this->loader = $loader;
 		$this->twig = $twig;
-		$this->views = $views;
+		$this->views = Mixed::normalizePath( realpath( $views ) );
 
 		$this->environment()->addGlobal( 'global', View::getGlobals() );
 	}
@@ -48,6 +49,7 @@ class ViewEngine implements ViewEngineInterface {
 	 * {@inheritDoc}
 	 */
 	public function exists( $view ) {
+		$view = $this->twigCanonical( $view );
 		return $this->loader()->exists( $view );
 	}
 
@@ -55,6 +57,7 @@ class ViewEngine implements ViewEngineInterface {
 	 * {@inheritDoc}
 	 */
 	public function canonical( $view ) {
+		$view = $this->twigCanonical( $view );
 		// ::findTemplate() is private so we use a suitable alternative
 		return $this->loader->getCacheKey( $view );
 	}
@@ -64,6 +67,7 @@ class ViewEngine implements ViewEngineInterface {
 	 */
 	public function make( $views, $context = [] ) {
 		foreach ( $views as $view ) {
+			$view = $this->twigCanonical( $view );
 			if ( $this->exists( $view ) ) {
 				return (new TwigView())
 					->setName( $view )
@@ -73,6 +77,23 @@ class ViewEngine implements ViewEngineInterface {
 		}
 
 		throw new Exception( 'View not found for "' . implode( ', ', $views ) . '"' );
+	}
+
+	/**
+	 * Return a canonical string representation of the view name in Twig's format.
+	 *
+	 * @param  string $view
+	 * @return string
+	 */
+	public function twigCanonical( $view ) {
+		$views_root = $this->views . DIRECTORY_SEPARATOR;
+		$normalized = realpath( $view );
+
+		if ( $normalized && is_file( $normalized ) ) {
+			$view = preg_replace( '~^' . preg_quote( $views_root, '~' ) . '~', '', $normalized );
+		}
+
+		return $view;
 	}
 
 	/**
