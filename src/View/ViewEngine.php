@@ -65,14 +65,13 @@ class ViewEngine implements ViewEngineInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function make( $views, $context = [] ) {
+	public function make( $views ) {
 		foreach ( $views as $view ) {
 			$view = $this->twigCanonical( $view );
 			if ( $this->exists( $view ) ) {
 				return (new TwigView())
 					->setName( $view )
-					->setTwigView( $this->environment()->load( $view ) )
-					->with( $context );
+					->setTwigView( $this->environment()->load( $view ) );
 			}
 		}
 
