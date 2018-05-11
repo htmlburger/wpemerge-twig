@@ -1,6 +1,6 @@
 # WP Emerge Twig
 
-Enables the use of Twig views in WP Emerge.
+Enables the use of Twig views in [WP Emerge](https://github.com/htmlburger/wpemerge).
 
 ## Quickstart
 
@@ -13,37 +13,37 @@ Enables the use of Twig views in WP Emerge.
         ],
     ] );
     ```
-1. Replace the current view engine by adding this immediately after `WPEmerge::boot()`:
-    ```php
-    $container = WPEmerge::getContainer();
-    $container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
-    ```
 
 ## Options
 
 Default options:
 ```php
 [
+	// Automatically replace the default view engine for WP Emerge.
+    'replace_default_engine' => true,
     'views' => ABSPATH,
-    'twig' => [ // options passed directly to Twig
+    'options' => [
+        // Options passed directly to Twig:
         'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
-    ]
+    ],
 ]
 ```
 
-You can use this to change the default options:
+You can change these options by specifying a `twig` key in your WP Emerge config array:
 ```php
-$container = WPEmerge::getContainer();
-$container[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_OPTIONS_KEY ] = [
+WPEmerge::boot( [
+    // ... other WP Emerge options
     'twig' => [
-        'cache' => false, // disable cache (NOT advisable for production use)
-        // ... other options
-    ]
-    // ... other options
-];
+        // ... other WP Emerge Twig options
+        'options' => [
+            // ... other Twig options
+            'cache' => false,
+        ],
+    ],
+] );
 ```
 
-More information on what Twig options are supported is available on https://twig.symfony.com/doc/2.x/api.html
+More information on what Twig options are supported is available on [https://twig.symfony.com/doc/2.x/api.html](https://twig.symfony.com/doc/2.x/api.html).
 
 ## Extending Twig
 
@@ -61,4 +61,4 @@ With this, you now have your very own custom Twig filter:
 {{ 'hello world!' | myfilter }}
 ```
 
-More information on how you can extend Twig is available on https://twig.symfony.com/doc/2.x/advanced.html#creating-extensions
+More information on how you can extend Twig is available on [https://twig.symfony.com/doc/2.x/advanced.html#creating-extensions](https://twig.symfony.com/doc/2.x/advanced.html#creating-extensions).

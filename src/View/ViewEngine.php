@@ -2,10 +2,11 @@
 
 namespace WPEmergeTwig\View;
 
+use Exception;
 use Twig_Environment;
 use Twig_ExistsLoaderInterface;
 use WPEmerge\Facades\View;
-use WPEmerge\Helpers\Mixed;
+use WPEmerge\Helpers\MixedType;
 use WPEmerge\View\ViewEngineInterface;
 
 class ViewEngine implements ViewEngineInterface {
@@ -40,7 +41,7 @@ class ViewEngine implements ViewEngineInterface {
 	public function __construct( Twig_ExistsLoaderInterface $loader, Twig_Environment $twig, $views ) {
 		$this->loader = $loader;
 		$this->twig = $twig;
-		$this->views = Mixed::normalizePath( realpath( $views ) );
+		$this->views = MixedType::normalizePath( realpath( $views ) );
 
 		$this->environment()->addGlobal( 'global', View::getGlobals() );
 	}
@@ -59,7 +60,7 @@ class ViewEngine implements ViewEngineInterface {
 	public function canonical( $view ) {
 		$view = $this->twigCanonical( $view );
 		// ::findTemplate() is private so we use a suitable alternative
-		return $this->loader->getCacheKey( $view );
+		return $this->loader()->getCacheKey( $view );
 	}
 
 	/**
@@ -86,7 +87,7 @@ class ViewEngine implements ViewEngineInterface {
 	 */
 	public function twigCanonical( $view ) {
 		$views_root = $this->views . DIRECTORY_SEPARATOR;
-		$normalized = realpath( $view );
+		$normalized = MixedType::normalizePath( $view );
 
 		if ( $normalized && is_file( $normalized ) ) {
 			$view = preg_replace( '~^' . preg_quote( $views_root, '~' ) . '~', '', $normalized );
