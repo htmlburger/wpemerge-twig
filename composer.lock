@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf6bb567f8347f1814625a1b02210907",
+    "content-hash": "0b9de8312515001c3c9a59ccba58c3d4",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -73,16 +73,16 @@
         },
         {
             "name": "htmlburger/wpemerge",
-            "version": "0.8.4",
+            "version": "0.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/wpemerge.git",
-                "reference": "c5dc052d17962310c798fc47dcde58d4777e6ffa"
+                "reference": "cf59c609ec2740fcdf2496e60c83b20f4126cc9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/c5dc052d17962310c798fc47dcde58d4777e6ffa",
-                "reference": "c5dc052d17962310c798fc47dcde58d4777e6ffa",
+                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/cf59c609ec2740fcdf2496e60c83b20f4126cc9e",
+                "reference": "cf59c609ec2740fcdf2496e60c83b20f4126cc9e",
                 "shasum": ""
             },
             "require": {
@@ -113,13 +113,14 @@
             "authors": [
                 {
                     "name": "htmlBurger",
-                    "email": "wordpress@htmlburger.com",
-                    "homepage": "https://htmlburger.com/",
+                    "email": "info@htmlburger.com",
+                    "homepage": "http://htmlburger.com/",
                     "role": "Developer"
                 },
                 {
                     "name": "Atanas Angelov",
                     "email": "atanas.angelov.dev@gmail.com",
+                    "homepage": "https://github.com/atanas-angelov-dev/",
                     "role": "Developer"
                 }
             ],
@@ -137,7 +138,7 @@
                 "wordpress",
                 "wpemerge"
             ],
-            "time": "2018-02-13T16:12:59+00:00"
+            "time": "2018-05-11T22:39:49+00:00"
         },
         {
             "name": "pimple/pimple",
