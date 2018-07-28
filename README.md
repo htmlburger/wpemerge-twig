@@ -53,7 +53,7 @@ $myfilter = new Twig_Filter( 'myfilter', function( $string ) {
     return strtoupper( $string );
 } );
 
-$twig = WPEmerge::resolve( 'wpemerge_twig.view.engine' );
+$twig = WPEmerge::resolve( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
 $twig->environment()->addFilter( $myfilter );
 ```
 With this, you now have your very own custom Twig filter:
