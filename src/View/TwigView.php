@@ -2,12 +2,12 @@
 
 namespace WPEmergeTwig\View;
 
-use Exception;
 use GuzzleHttp\Psr7;
 use GuzzleHttp\Psr7\Response;
 use Twig_TemplateWrapper;
 use WPEmerge\View\HasContextTrait;
 use WPEmerge\View\HasNameTrait;
+use WPEmerge\View\ViewException;
 use WPEmerge\View\ViewInterface;
 
 /**
@@ -43,7 +43,7 @@ class TwigView implements ViewInterface {
 	 */
 	public function toString() {
 		if ( empty( $this->getName() ) ) {
-			throw new Exception( 'View must have a name.' );
+			throw new ViewException( 'View must have a name.' );
 		}
 
 		return $this->getTwigView()->render( $this->getContext() );
