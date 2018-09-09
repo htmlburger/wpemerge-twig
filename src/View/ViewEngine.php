@@ -2,12 +2,12 @@
 
 namespace WPEmergeTwig\View;
 
-use Exception;
 use Twig_Environment;
 use Twig_ExistsLoaderInterface;
 use WPEmerge\Facades\View;
 use WPEmerge\Helpers\MixedType;
 use WPEmerge\View\ViewEngineInterface;
+use WPEmerge\View\ViewNotFoundException;
 
 class ViewEngine implements ViewEngineInterface {
 	/**
@@ -76,7 +76,7 @@ class ViewEngine implements ViewEngineInterface {
 			}
 		}
 
-		throw new Exception( 'View not found for "' . implode( ', ', $views ) . '"' );
+		throw new ViewNotFoundException( 'View not found for "' . implode( ', ', $views ) . '"' );
 	}
 
 	/**
