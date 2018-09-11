@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b9de8312515001c3c9a59ccba58c3d4",
+    "content-hash": "f243e16647888aa12797d021d2c64c9c",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -73,16 +73,16 @@
         },
         {
             "name": "htmlburger/wpemerge",
-            "version": "0.9.0",
+            "version": "0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/htmlburger/wpemerge.git",
-                "reference": "cf59c609ec2740fcdf2496e60c83b20f4126cc9e"
+                "reference": "553864d8c6d5ce09b4696aaf26fe2190813e2cc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/cf59c609ec2740fcdf2496e60c83b20f4126cc9e",
-                "reference": "cf59c609ec2740fcdf2496e60c83b20f4126cc9e",
+                "url": "https://api.github.com/repos/htmlburger/wpemerge/zipball/553864d8c6d5ce09b4696aaf26fe2190813e2cc9",
+                "reference": "553864d8c6d5ce09b4696aaf26fe2190813e2cc9",
                 "shasum": ""
             },
             "require": {
@@ -92,6 +92,7 @@
                 "ralouphie/getallheaders": "^2.0"
             },
             "require-dev": {
+                "filp/whoops": "^2.2",
                 "mockery/mockery": "^0.9"
             },
             "type": "library",
@@ -138,7 +139,7 @@
                 "wordpress",
                 "wpemerge"
             ],
-            "time": "2018-05-11T22:39:49+00:00"
+            "time": "2018-09-11T09:40:19+00:00"
         },
         {
             "name": "pimple/pimple",
