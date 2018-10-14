@@ -33,7 +33,9 @@ class ServiceProvider implements ServiceProviderInterface {
 		};
 
 		if ( $container[ WPEMERGE_CONFIG_KEY ]['twig']['replace_default_engine'] ) {
-			$container[ WPEMERGE_VIEW_ENGINE_KEY ] = $container->raw( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
+			$container[ WPEMERGE_VIEW_ENGINE_KEY ] = function( $c ) {
+				return $c[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY ];
+			};
 		}
 	}
 

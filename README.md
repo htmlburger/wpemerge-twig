@@ -53,6 +53,7 @@ $myfilter = new Twig_Filter( 'myfilter', function( $string ) {
     return strtoupper( $string );
 } );
 
+// WPEmerge::resolve() used for brevity's sake - use a Service Provider instead.
 $twig = WPEmerge::resolve( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
 $twig->environment()->addFilter( $myfilter );
 ```
