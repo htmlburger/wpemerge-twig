@@ -33,7 +33,7 @@
     "require": {
         "php": "^7.0",
         "twig/twig": "^2.4",
-        "htmlburger/wpemerge": "~0.10.0"
+        "htmlburger/wpemerge": "~0.10.0 || ~0.11.0"
     },
     "require-dev": {
     }
