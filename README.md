@@ -19,9 +19,9 @@ Enables the use of Twig views in [WP Emerge](https://github.com/htmlburger/wpeme
 Default options:
 ```php
 [
-	// Automatically replace the default view engine for WP Emerge.
+    // Automatically replace the default view engine for WP Emerge.
     'replace_default_engine' => true,
-    'views' => ABSPATH,
+    'views' => get_stylesheet_directory(),
     'options' => [
         // Options passed directly to Twig:
         'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
