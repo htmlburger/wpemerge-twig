@@ -7,7 +7,7 @@ Enables the use of Twig views in [WP Emerge](https://github.com/htmlburger/wpeme
 1. Run `composer require htmlburger/wpemerge-twig` in your theme directory
 1. Add `\WPEmergeTwig\View\ServiceProvider` to your array of providers when booting WPEmerge:
     ```php
-    WPEmerge::boot( [
+    WPEmerge::bootstrap( [
         'providers' => [
             \WPEmergeTwig\View\ServiceProvider::class,
         ],
@@ -31,7 +31,7 @@ Default options:
 
 You can change these options by specifying a `twig` key in your WP Emerge config array:
 ```php
-WPEmerge::boot( [
+WPEmerge::bootstrap( [
     // ... other WP Emerge options
     'twig' => [
         // ... other WP Emerge Twig options

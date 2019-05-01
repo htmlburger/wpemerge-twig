@@ -42,7 +42,7 @@ class ServiceProvider implements ServiceProviderInterface {
 	/**
 	 * {@inheritDoc}
 	 */
-	public function boot( $container ) {
+	public function bootstrap( $container ) {
 		// nothing to boot
 	}
 }
