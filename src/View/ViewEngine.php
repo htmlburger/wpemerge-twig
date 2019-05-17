@@ -25,23 +25,23 @@ class ViewEngine implements ViewEngineInterface {
 	protected $twig = null;
 
 	/**
-	 * Root directory for all views
+	 * Directories for all views.
 	 *
-	 * @var string
+	 * @var array<string>
 	 */
-	protected $views = '';
+	protected $directories = [];
 
 	/**
 	 * Constructor
 	 *
 	 * @param Twig_ExistsLoaderInterface $loader
 	 * @param Twig_Environment           $twig
-	 * @param string                     $views
+	 * @param array<string>              $directories
 	 */
-	public function __construct( Twig_ExistsLoaderInterface $loader, Twig_Environment $twig, $views ) {
+	public function __construct( Twig_ExistsLoaderInterface $loader, Twig_Environment $twig, $directories ) {
 		$this->loader = $loader;
 		$this->twig = $twig;
-		$this->views = MixedType::normalizePath( realpath( $views ) );
+		$this->directories = $directories;
 
 		$this->environment()->addGlobal( 'global', View::getGlobals() );
 	}
@@ -86,11 +86,17 @@ class ViewEngine implements ViewEngineInterface {
 	 * @return string
 	 */
 	public function twigCanonical( $view ) {
-		$views_root = $this->views . DIRECTORY_SEPARATOR;
-		$normalized = MixedType::normalizePath( $view );
+		$normalized = realpath( $view );
 
 		if ( $normalized && is_file( $normalized ) ) {
-			$view = preg_replace( '~^' . preg_quote( $views_root, '~' ) . '~', '', $normalized );
+			foreach ( $this->directories as $directory ) {
+				$root = $directory . DIRECTORY_SEPARATOR;
+
+				if ( substr( $normalized, 0, strlen( $root ) ) === $root ) {
+					$view = substr( $normalized, strlen( $root ) );
+					break;
+				}
+			}
 		}
 
 		return $view;

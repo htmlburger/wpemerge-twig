@@ -17,7 +17,7 @@ class ServiceProvider implements ServiceProviderInterface {
 	public function register( $container ) {
 		$this->extendConfig( $container, 'twig', [
 			'replace_default_engine' => true,
-			'views' => MixedType::normalizePath( get_stylesheet_directory() ),
+			'views' => [get_stylesheet_directory(), get_template_directory()],
 			'options' => [
 				'base_template_class' => Template::class,
 				'cache' => MixedType::normalizePath( get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig' ),
@@ -25,11 +25,19 @@ class ServiceProvider implements ServiceProviderInterface {
 		] );
 
 		$container[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY ] = function( $c ) {
-			$config = $c[ WPEMERGE_CONFIG_KEY ]['twig'];
 			$root = MixedType::normalizePath( ABSPATH );
-			$loader = new Twig_Loader_Filesystem( str_replace( $root, '', $config['views'] ), $root );
+
+			$config = $c[ WPEMERGE_CONFIG_KEY ]['twig'];
+			$views = MixedType::toArray( $config['views'] );
+			$views = array_map( [MixedType::class, 'normalizePath'], $views );
+			$views = array_filter( $views );
+			$relative_views = array_map( function ( $directory ) use ( $root ) {
+				return substr( $directory, strlen( $root ) );
+			}, $views );
+
+			$loader = new Twig_Loader_Filesystem( $relative_views, $root );
 			$twig = new Twig_Environment( $loader, $config['options'] );
-			return new ViewEngine( $loader, $twig, $config['views'] );
+			return new ViewEngine( $loader, $twig, $views );
 		};
 
 		if ( $container[ WPEMERGE_CONFIG_KEY ]['twig']['replace_default_engine'] ) {
