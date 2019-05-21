@@ -31,7 +31,6 @@ Default options:
 
     // Options passed directly to Twig.
     'options' => [
-        // Options passed directly to Twig:
         'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
     ],
 ]
