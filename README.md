@@ -21,7 +21,15 @@ Default options:
 [
     // Automatically replace the default view engine for WP Emerge.
     'replace_default_engine' => true,
+
+    // Pass .php views to the default view engine.
+    // replace_default_engine must be true for this to take effect.
+    'proxy_php_views' => true,
+
+    // One or more directories to search for views.
     'views' => get_stylesheet_directory(),
+
+    // Options passed directly to Twig.
     'options' => [
         // Options passed directly to Twig:
         'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',

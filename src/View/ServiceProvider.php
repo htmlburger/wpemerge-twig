@@ -2,11 +2,12 @@
 
 namespace WPEmergeTwig\View;
 
+use Twig_Environment;
+use Twig_Loader_Filesystem;
 use WPEmerge\Helpers\MixedType;
 use WPEmerge\ServiceProviders\ExtendsConfigTrait;
 use WPEmerge\ServiceProviders\ServiceProviderInterface;
-use Twig_Environment;
-use Twig_Loader_Filesystem;
+use WPEmerge\View\NameProxyViewEngine;
 
 class ServiceProvider implements ServiceProviderInterface {
 	use ExtendsConfigTrait;
@@ -17,6 +18,7 @@ class ServiceProvider implements ServiceProviderInterface {
 	public function register( $container ) {
 		$this->extendConfig( $container, 'twig', [
 			'replace_default_engine' => true,
+			'proxy_php_views' => true,
 			'views' => [get_stylesheet_directory(), get_template_directory()],
 			'options' => [
 				'base_template_class' => Template::class,
@@ -42,6 +44,13 @@ class ServiceProvider implements ServiceProviderInterface {
 
 		if ( $container[ WPEMERGE_CONFIG_KEY ]['twig']['replace_default_engine'] ) {
 			$container[ WPEMERGE_VIEW_ENGINE_KEY ] = function( $c ) {
+				if ( $c[ WPEMERGE_CONFIG_KEY ]['twig']['proxy_php_views'] ) {
+					return new NameProxyViewEngine( [
+						'.twig.php' => WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY,
+						'.php' => WPEMERGE_VIEW_PHP_VIEW_ENGINE_KEY,
+					], WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
+				}
+
 				return $c[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY ];
 			};
 		}
