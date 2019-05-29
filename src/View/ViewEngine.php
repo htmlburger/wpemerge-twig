@@ -42,8 +42,6 @@ class ViewEngine implements ViewEngineInterface {
 		$this->loader = $loader;
 		$this->twig = $twig;
 		$this->directories = $directories;
-
-		$this->environment()->addGlobal( 'global', View::getGlobals() );
 	}
 
 	/**

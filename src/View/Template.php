@@ -13,6 +13,7 @@ abstract class Template extends Twig_Template {
 		$view = (new TwigView())->setName( $this->getTemplateName() );
 		View::compose( $view );
 		$context = array_merge(
+			['global' => View::getGlobals()],
 			$view->getContext(),
 			$context
 		);
