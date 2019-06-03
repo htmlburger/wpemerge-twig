@@ -6,14 +6,14 @@
     "homepage": "https://github.com/htmlburger/wpemerge-twig",
     "authors": [
         {
+          "name": "Atanas Angelov",
+          "email": "atanas.angelov.dev@gmail.com",
+          "role": "Developer"
+        },
+        {
             "name": "htmlBurger",
             "email": "wordpress@htmlburger.com",
             "homepage": "https://htmlburger.com/",
-            "role": "Developer"
-        },
-        {
-            "name": "Atanas Angelov",
-            "email": "atanas.angelov.dev@gmail.com",
             "role": "Developer"
         }
     ],
@@ -33,7 +33,7 @@
     "require": {
         "php": "^7.0",
         "twig/twig": "^2.4",
-        "htmlburger/wpemerge": "~0.10.0 || ~0.11.0"
+        "htmlburger/wpemerge": "~0.15.0"
     },
     "require-dev": {
     }
