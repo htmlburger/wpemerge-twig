@@ -16,13 +16,15 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
+		$cache_dir = $container[ WPEMERGE_CONFIG_KEY ]['cache'];
+
 		$this->extendConfig( $container, 'twig', [
 			'replace_default_engine' => true,
 			'proxy_php_views' => true,
 			'views' => [get_stylesheet_directory(), get_template_directory()],
 			'options' => [
 				'base_template_class' => Template::class,
-				'cache' => MixedType::normalizePath( get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig' ),
+				'cache' => MixedType::addTrailingSlash( $cache_dir ) . 'twig',
 			],
 		] );
 
