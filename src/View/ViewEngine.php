@@ -4,8 +4,6 @@ namespace WPEmergeTwig\View;
 
 use Twig_Environment;
 use Twig_ExistsLoaderInterface;
-use WPEmerge\Facades\View;
-use WPEmerge\Helpers\MixedType;
 use WPEmerge\View\ViewEngineInterface;
 use WPEmerge\View\ViewNotFoundException;
 
