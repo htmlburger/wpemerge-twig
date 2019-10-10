@@ -47,10 +47,14 @@ class ServiceProvider implements ServiceProviderInterface {
 		if ( $container[ WPEMERGE_CONFIG_KEY ]['twig']['replace_default_engine'] ) {
 			$container[ WPEMERGE_VIEW_ENGINE_KEY ] = function( $c ) {
 				if ( $c[ WPEMERGE_CONFIG_KEY ]['twig']['proxy_php_views'] ) {
-					return new NameProxyViewEngine( [
-						'.twig.php' => WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY,
-						'.php' => WPEMERGE_VIEW_PHP_VIEW_ENGINE_KEY,
-					], WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
+					return new NameProxyViewEngine(
+						$c[ WPEMERGE_APPLICATION_KEY ],
+						[
+							'.twig.php' => WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY,
+							'.php' => WPEMERGE_VIEW_PHP_VIEW_ENGINE_KEY,
+						],
+						WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY
+					);
 				}
 
 				return $c[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY ];
