@@ -3,20 +3,24 @@
 namespace WPEmergeTwig\View;
 
 use Twig_Template;
-use WPEmerge\Facades\View;
 
 abstract class Template extends Twig_Template {
 	/**
 	 * {@inheritDoc}
 	 */
 	public function display( array $context, array $blocks = [] ) {
+		$compose = $this->env->getFunction( 'wpemerge_compose' );
+
 		$view = (new TwigView())->setName( $this->getTemplateName() );
-		View::compose( $view );
+
+		$function = $compose->getCallable();
+		$function( $view );
+
 		$context = array_merge(
-			['global' => View::getGlobals()],
 			$view->getContext(),
 			$context
 		);
+
 		parent::display( $context, $blocks );
 	}
 }

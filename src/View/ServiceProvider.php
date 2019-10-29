@@ -3,6 +3,7 @@
 namespace WPEmergeTwig\View;
 
 use Twig_Environment;
+use Twig_Function;
 use Twig_Loader_Filesystem;
 use WPEmerge\Helpers\MixedType;
 use WPEmerge\ServiceProviders\ExtendsConfigTrait;
@@ -23,6 +24,7 @@ class ServiceProvider implements ServiceProviderInterface {
 			'proxy_php_views' => true,
 			'views' => [get_stylesheet_directory(), get_template_directory()],
 			'options' => [
+				'debug' => $container[ WPEMERGE_APPLICATION_KEY ]->debugging(),
 				'base_template_class' => Template::class,
 				'cache' => MixedType::addTrailingSlash( $cache_dir ) . 'twig',
 			],
@@ -41,6 +43,13 @@ class ServiceProvider implements ServiceProviderInterface {
 
 			$loader = new Twig_Loader_Filesystem( $relative_views, $root );
 			$twig = new Twig_Environment( $loader, $config['options'] );
+
+			$compose = new Twig_Function('wpemerge_compose', function ( $view ) use ( $c ) {
+				$c[ WPEMERGE_VIEW_COMPOSE_ACTION_KEY ]( $view );
+			});
+
+			$twig->addFunction( $compose );
+
 			return new ViewEngine( $loader, $twig, $views );
 		};
 
