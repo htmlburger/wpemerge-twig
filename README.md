@@ -5,7 +5,7 @@ Enables the use of Twig views in [WP Emerge](https://github.com/htmlburger/wpeme
 ## Quickstart
 
 1. Run `composer require htmlburger/wpemerge-twig` in your theme directory
-1. Add `\WPEmergeTwig\View\ServiceProvider` to your array of providers when booting WPEmerge:
+2. Add `\WPEmergeTwig\View\ServiceProvider` to your array of providers when booting WPEmerge:
     ```php
     WPEmerge::bootstrap( [
         'providers' => [
