@@ -24,7 +24,7 @@ class ServiceProvider implements ServiceProviderInterface {
 			'proxy_php_views' => true,
 			'views' => [get_stylesheet_directory(), get_template_directory()],
 			'options' => [
-				'debug' => $container[ WPEMERGE_APPLICATION_KEY ]->debugging(),
+				'debug' => $container[ WPEMERGE_CONFIG_KEY ]['debug']['enable'],
 				'base_template_class' => Template::class,
 				'cache' => MixedType::addTrailingSlash( $cache_dir ) . 'twig',
 			],
