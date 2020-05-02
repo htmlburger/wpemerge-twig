@@ -7,7 +7,7 @@ Enables the use of Twig views in [WP Emerge](https://github.com/htmlburger/wpeme
 1. Run `composer require htmlburger/wpemerge-twig` in your theme directory
 2. Add `\WPEmergeTwig\View\ServiceProvider` to your array of providers when booting WPEmerge:
     ```php
-    WPEmerge::bootstrap( [
+    \App::make()->bootstrap( [
         'providers' => [
             \WPEmergeTwig\View\ServiceProvider::class,
         ],
@@ -38,7 +38,7 @@ Default options:
 
 You can change these options by specifying a `twig` key in your WP Emerge config array:
 ```php
-WPEmerge::bootstrap( [
+\App::make()->bootstrap( [
     // ... other WP Emerge options
     'twig' => [
         // ... other WP Emerge Twig options
@@ -60,8 +60,8 @@ $myfilter = new Twig_Filter( 'myfilter', function( $string ) {
     return strtoupper( $string );
 } );
 
-// WPEmerge::resolve() used for brevity's sake - use a Service Provider instead.
-$twig = WPEmerge::resolve( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
+// \App::resolve() used for brevity's sake - use a Service Provider instead.
+$twig = \App::resolve( WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY );
 $twig->environment()->addFilter( $myfilter );
 ```
 With this, you now have your very own custom Twig filter:
