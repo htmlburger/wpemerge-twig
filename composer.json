@@ -6,9 +6,9 @@
     "homepage": "https://github.com/htmlburger/wpemerge-twig",
     "authors": [
         {
-          "name": "Atanas Angelov",
-          "email": "atanas.angelov.dev@gmail.com",
-          "role": "Developer"
+            "name": "Atanas Angelov",
+            "email": "atanas.angelov.dev@gmail.com",
+            "role": "Developer"
         },
         {
             "name": "htmlBurger",
