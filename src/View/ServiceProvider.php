@@ -17,12 +17,13 @@ class ServiceProvider implements ServiceProviderInterface {
 	 * {@inheritDoc}
 	 */
 	public function register( $container ) {
+		$views_dir = (array) $container[ WPEMERGE_CONFIG_KEY ]['views'];
 		$cache_dir = $container[ WPEMERGE_CONFIG_KEY ]['cache']['path'];
 
 		$this->extendConfig( $container, 'twig', [
 			'replace_default_engine' => true,
 			'proxy_php_views' => true,
-			'views' => [get_stylesheet_directory(), get_template_directory()],
+			'views' => $views_dir,
 			'options' => [
 				'debug' => $container[ WPEMERGE_CONFIG_KEY ]['debug']['enable'],
 				'base_template_class' => Template::class,

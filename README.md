@@ -27,11 +27,13 @@ Default options:
     'proxy_php_views' => true,
 
     // One or more directories to search for views.
-    'views' => get_stylesheet_directory(),
+    // Defaults to the main ['views'] key of the configuration.
+    'views' => [get_stylesheet_directory(), get_template_directory()],
 
     // Options passed directly to Twig.
     'options' => [
-        'cache' => get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'cache' . DIRECTORY_SEPARATOR . 'twig',
+        // 'cache' defaults to the main ['cache']['path'] key of the configuration.
+        'cache' => 'wp-content/uploads/wpemerge/cache/twig',
     ],
 ]
 ```
