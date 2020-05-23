@@ -1,40 +1,38 @@
 {
-    "name": "htmlburger/wpemerge-twig",
-    "description": "Enables the use of Twig views in WP Emerge.",
-    "keywords": ["wordpress", "framework", "template", "view", "wpemerge"],
-    "license": "GPL-2.0-only",
-    "homepage": "https://github.com/htmlburger/wpemerge-twig",
-    "authors": [
-        {
-            "name": "Atanas Angelov",
-            "email": "atanas.angelov.dev@gmail.com",
-            "role": "Developer"
-        },
-        {
-            "name": "htmlBurger",
-            "email": "wordpress@htmlburger.com",
-            "homepage": "https://htmlburger.com/",
-            "role": "Developer"
-        }
-    ],
-    "support": {
-        "source": "https://github.com/htmlburger/wpemerge-twig",
-        "issues": "https://github.com/htmlburger/wpemerge-twig/issues",
-        "email": "wordpress@htmlburger.com"
+  "name": "htmlburger/wpemerge-twig",
+  "description": "Enables the use of Twig views in WP Emerge.",
+  "keywords": ["wordpress", "framework", "template", "view", "wpemerge"],
+  "license": "GPL-2.0-only",
+  "homepage": "https://github.com/htmlburger/wpemerge-twig",
+  "authors": [
+    {
+      "name": "Atanas Angelov",
+      "email": "hi@atanas.dev",
+      "role": "Developer"
     },
-    "autoload": {
-        "psr-4": {
-            "WPEmergeTwig\\": "src/"
-        },
-        "files": [
-            "config.php"
-        ]
-    },
-    "require": {
-        "php": "^7.0",
-        "twig/twig": "^2.4",
-        "htmlburger/wpemerge": "~0.15.0"
-    },
-    "require-dev": {
+    {
+      "name": "htmlBurger",
+      "email": "wordpress@htmlburger.com",
+      "homepage": "https://htmlburger.com/",
+      "role": "Developer"
     }
+  ],
+  "support": {
+    "source": "https://github.com/htmlburger/wpemerge-twig",
+    "issues": "https://github.com/htmlburger/wpemerge-twig/issues",
+    "email": "hi@atanas.dev"
+  },
+  "autoload": {
+    "psr-4": {
+      "WPEmergeTwig\\": "src/"
+    },
+    "files": [
+      "config.php"
+    ]
+  },
+  "require": {
+    "php": "^7.0",
+    "twig/twig": "^2.4",
+    "htmlburger/wpemerge": "~0.16.0"
+  }
 }
