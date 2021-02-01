@@ -32,7 +32,7 @@ class ServiceProvider implements ServiceProviderInterface {
 		] );
 
 		$container[ WPEMERGETWIG_VIEW_TWIG_VIEW_ENGINE_KEY ] = function( $c ) {
-			$root = MixedType::normalizePath( ABSPATH );
+			$root = MixedType::normalizePath( WP_CONTENT_DIR . DIRECTORY_SEPARATOR );
 
 			$config = $c[ WPEMERGE_CONFIG_KEY ]['twig'];
 			$views = MixedType::toArray( $config['views'] );
